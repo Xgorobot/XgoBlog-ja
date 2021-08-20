@@ -20,20 +20,38 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"xgorobot.github.io","root":"/","images":"/images","scheme":"Mist","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":9,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="什么是XGO mini新手上路常见问题串口通信协议版本： V1.0发布日期： 2021&#x2F;08&#x2F;05               日期原因作者                   2021&#x2F;08&#x2F;05创建文档、发布文档林涛        前言&amp;emsp;&amp;emsp;本文档适用于 XGO产品上位机与机器狗之间命令&#x2F;数据交互的通信协议,采用标准TTL串行通讯，XH2.54 4PIN接口连接。  背景知识">
+<meta name="description" content="什么是XGO mini一、产品说明 二、产品参数与结构 三、AI模组介绍 四、核心技术 五、学习内容     新手上路一、操作说明 二、示例程序1.准备将机器狗平铺后按下电源键，机器狗进入默认站立初始状态，此时屏幕亮起如下图所示 初始界面中有4个信息需要我们掌握，A、B和C键在模组上的位置如上图所示。（1）固件版本：表示当前AI模块的固件版本号，可以在官方网站下载最新版本固件及工具。（2）操作说明">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XGO mini">
 <meta property="og:url" content="https://xgorobot.github.io/2021/08/15/XGOmini/index.html">
 <meta property="og:site_name" content="XGOrobot">
-<meta property="og:description" content="什么是XGO mini新手上路常见问题串口通信协议版本： V1.0发布日期： 2021&#x2F;08&#x2F;05               日期原因作者                   2021&#x2F;08&#x2F;05创建文档、发布文档林涛        前言&amp;emsp;&amp;emsp;本文档适用于 XGO产品上位机与机器狗之间命令&#x2F;数据交互的通信协议,采用标准TTL串行通讯，XH2.54 4PIN接口连接。  背景知识">
+<meta property="og:description" content="什么是XGO mini一、产品说明 二、产品参数与结构 三、AI模组介绍 四、核心技术 五、学习内容     新手上路一、操作说明 二、示例程序1.准备将机器狗平铺后按下电源键，机器狗进入默认站立初始状态，此时屏幕亮起如下图所示 初始界面中有4个信息需要我们掌握，A、B和C键在模组上的位置如上图所示。（1）固件版本：表示当前AI模块的固件版本号，可以在官方网站下载最新版本固件及工具。（2）操作说明">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/miniprotocol_board.png">
-<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/miniprotocol_maincoordinate.png">
-<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/miniprotocol_legcoordinate.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/produce/xgo-mini%E8%AF%B4%E6%98%8E%E4%B9%A61-1.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/produce/xgo-mini%E8%AF%B4%E6%98%8E%E4%B9%A61-2.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/produce/xgo-mini%E8%AF%B4%E6%98%8E%E4%B9%A61-3.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/produce/xgo-mini%E8%AF%B4%E6%98%8E%E4%B9%A61-4.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/produce/xgo-mini%E8%AF%B4%E6%98%8E%E4%B9%A61-5.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/produce/xgo-mini%E8%AF%B4%E6%98%8E%E4%B9%A62-1.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/produce/minidemo_main.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/trafficsign/goforward.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/trafficsign/stop.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/trafficsign/forbid.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/trafficsign/park.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/qrcode/hello.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/qrcode/sitdown.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/qrcode/goforward.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/qrcode/gobackward.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/qrcode/turnleft.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/qrcode/turnright.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/qrcode/show.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/protocol/miniprotocol_board.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/protocol/miniprotocol_maincoordinate.png">
+<meta property="og:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/protocol/miniprotocol_legcoordinate.png">
 <meta property="article:published_time" content="2021-08-15T09:41:40.000Z">
-<meta property="article:modified_time" content="2021-08-18T06:56:10.983Z">
+<meta property="article:modified_time" content="2021-08-20T14:25:41.015Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/miniprotocol_board.png">
+<meta name="twitter:image" content="https://xgorobot.github.io/2021/08/15/XGOmini/produce/xgo-mini%E8%AF%B4%E6%98%8E%E4%B9%A61-1.png">
 
 
 <link rel="canonical" href="https://xgorobot.github.io/2021/08/15/XGOmini/">
@@ -87,9 +105,9 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-product"><a href="/product/" rel="section"><i class="fas fa-dog fa-fw"></i>产品</a></li>
         <li class="menu-item menu-item-download"><a href="/download/" rel="section"><i class="fas fa-folder fa-fw"></i>下载</a></li>
+        <li class="menu-item menu-item-lesson"><a href="/lesson/" rel="section"><i class="fas fa-book fa-fw"></i>课程</a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fas fa-archive fa-fw"></i>归档</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fas fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-switch_en"><a href="https://xgorobot.github.io/XgoBlog-en/" rel="section"><i class="fas fa-globe fa-fw"></i>English</a></li>
@@ -123,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFXGO-mini"><span class="nav-text">什么是XGO mini</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E6%89%8B%E4%B8%8A%E8%B7%AF"><span class="nav-text">新手上路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-text">常见问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="nav-text">串口通信协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86"><span class="nav-text">背景知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%8E%A5%E5%8F%A3"><span class="nav-text">软件接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%80%9A%E4%BF%A1%E6%A0%BC%E5%BC%8F"><span class="nav-text">1.通信格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%8C%87%E4%BB%A4"><span class="nav-text">2.指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E5%86%99%E6%8C%87%E4%BB%A4%EF%BC%8C%E6%97%A0%E5%BA%94%E7%AD%94-0x00"><span class="nav-text">2.1.写指令，无应答 (0x00)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E8%AF%BB%E6%8C%87%E4%BB%A4-0x02"><span class="nav-text">2.2.读指令 (0x02)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="nav-text">3.机器人坐标系</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFXGO-mini"><span class="nav-text">什么是XGO mini</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BA%A7%E5%93%81%E8%AF%B4%E6%98%8E"><span class="nav-text">一、产品说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BA%A7%E5%93%81%E5%8F%82%E6%95%B0%E4%B8%8E%E7%BB%93%E6%9E%84"><span class="nav-text">二、产品参数与结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81AI%E6%A8%A1%E7%BB%84%E4%BB%8B%E7%BB%8D"><span class="nav-text">三、AI模组介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF"><span class="nav-text">四、核心技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%AD%A6%E4%B9%A0%E5%86%85%E5%AE%B9"><span class="nav-text">五、学习内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E6%89%8B%E4%B8%8A%E8%B7%AF"><span class="nav-text">新手上路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E"><span class="nav-text">一、操作说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F"><span class="nav-text">二、示例程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%87%86%E5%A4%87"><span class="nav-text">1.准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%80%89%E6%8B%A9%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F%E5%B9%B6%E4%BD%93%E9%AA%8C"><span class="nav-text">2.选择示例程序并体验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E"><span class="nav-text">3.示例程序详细说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F%E6%89%80%E9%9C%80%E5%9B%BE%E7%89%87%E7%B4%A0%E6%9D%90"><span class="nav-text">4.示例程序所需图片素材</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%A7%BB%E5%8A%A8%E7%AB%AF"><span class="nav-text">三、移动端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81PC%E7%AB%AF"><span class="nav-text">四、PC端</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-text">常见问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XGO-Mini%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97-1-%E5%9F%BA%E4%BA%8E%E6%A0%87%E5%87%86%E4%B8%B2%E5%8F%A3%E5%8D%8F%E8%AE%AE"><span class="nav-text">XGO-Mini二次开发指南(1)-基于标准串口协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86"><span class="nav-text">背景知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%8E%A5%E5%8F%A3"><span class="nav-text">软件接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%80%9A%E4%BF%A1%E6%A0%BC%E5%BC%8F"><span class="nav-text">1.通信格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%8C%87%E4%BB%A4"><span class="nav-text">2.指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E5%86%99%E6%8C%87%E4%BB%A4%EF%BC%8C%E6%97%A0%E5%BA%94%E7%AD%94-0x00"><span class="nav-text">2.1.写指令，无应答 (0x00)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E8%AF%BB%E6%8C%87%E4%BB%A4-0x02"><span class="nav-text">2.2.读指令 (0x02)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="nav-text">3.机器人坐标系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XGO-Mini%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97-2-%E5%9F%BA%E4%BA%8EROS%E5%BC%80%E5%8F%91%E5%8C%85"><span class="nav-text">XGO-Mini二次开发指南(2)-基于ROS开发包 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XGO-Mini%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97-3-%E5%9F%BA%E4%BA%8EPython%E5%BA%93%E6%96%87%E4%BB%B6"><span class="nav-text">XGO-Mini二次开发指南(3)-基于Python库文件  </span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -211,7 +229,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-08-18 14:56:10" itemprop="dateModified" datetime="2021-08-18T14:56:10+08:00">2021-08-18</time>
+        <time title="修改时间：2021-08-20 22:25:41" itemprop="dateModified" datetime="2021-08-20T22:25:41+08:00">2021-08-20</time>
       </span>
 
   
@@ -224,7 +242,203 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="什么是XGO-mini"><a href="#什么是XGO-mini" class="headerlink" title="什么是XGO mini"></a><center>什么是XGO mini</center></h1><h1 id="新手上路"><a href="#新手上路" class="headerlink" title="新手上路"></a><center>新手上路</center></h1><h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a><center>常见问题</center></h1><h1 id="串口通信协议"><a href="#串口通信协议" class="headerlink" title="串口通信协议"></a><center>串口通信协议</center></h1><p><em>版本： V1.0</em><br><em>发布日期： 2021/08/05</em></p>
+        <h1 id="什么是XGO-mini"><a href="#什么是XGO-mini" class="headerlink" title="什么是XGO mini"></a><center>什么是XGO mini</center></h1><h2 id="一、产品说明"><a href="#一、产品说明" class="headerlink" title="一、产品说明"></a>一、产品说明</h2><p><img src="produce/xgo-mini%E8%AF%B4%E6%98%8E%E4%B9%A61-1.png" alt="说明1-1" title="说明1-1"><br><br></p>
+<h2 id="二、产品参数与结构"><a href="#二、产品参数与结构" class="headerlink" title="二、产品参数与结构"></a>二、产品参数与结构</h2><p><img src="produce/xgo-mini%E8%AF%B4%E6%98%8E%E4%B9%A61-2.png" alt="说明1-2" title="说明1-2"><br><br></p>
+<h2 id="三、AI模组介绍"><a href="#三、AI模组介绍" class="headerlink" title="三、AI模组介绍"></a>三、AI模组介绍</h2><p><img src="produce/xgo-mini%E8%AF%B4%E6%98%8E%E4%B9%A61-3.png" alt="说明1-3" title="说明1-3"><br><br></p>
+<h2 id="四、核心技术"><a href="#四、核心技术" class="headerlink" title="四、核心技术"></a>四、核心技术</h2><p><img src="produce/xgo-mini%E8%AF%B4%E6%98%8E%E4%B9%A61-4.png" alt="说明1-4" title="说明1-4"><br><br></p>
+<h2 id="五、学习内容"><a href="#五、学习内容" class="headerlink" title="五、学习内容"></a>五、学习内容</h2><p><img src="produce/xgo-mini%E8%AF%B4%E6%98%8E%E4%B9%A61-5.png" alt="说明1-5" title="说明1-5"></p>
+<hr>
+<br>
+
+
+<h1 id="新手上路"><a href="#新手上路" class="headerlink" title="新手上路"></a><center>新手上路</center></h1><h2 id="一、操作说明"><a href="#一、操作说明" class="headerlink" title="一、操作说明"></a>一、操作说明</h2><p><img src="produce/xgo-mini%E8%AF%B4%E6%98%8E%E4%B9%A62-1.png" alt="说明2-1" title="说明2-1"></p>
+<h2 id="二、示例程序"><a href="#二、示例程序" class="headerlink" title="二、示例程序"></a>二、示例程序</h2><h3 id="1-准备"><a href="#1-准备" class="headerlink" title="1.准备"></a>1.准备</h3><p>将机器狗平铺后按下电源键，机器狗进入默认站立初始状态，此时屏幕亮起如下图所示<br><img src="produce/minidemo_main.png" alt="屏幕" title="屏幕"></p>
+<p>初始界面中有4个信息需要我们掌握，A、B和C键在模组上的位置如上图所示。<br>（1）固件版本：表示当前AI模块的固件版本号，可以在官方网站下载最新版本固件及工具。<br>（2）操作说明：A、B键操控界面菜单选项的切换，C键表示确认操作，长按C健退出当前程序。<br>（3）运行上次程序：通过编程将程序上传到AI模块时，可以选择这个选项，让AI模块运行最新一次上传的程序；<br>（4）尝试示例程序：选择这个选项，可以进入下一个界面，体验存储在AI模块的SD卡中的示例程序。</p>
+<h3 id="2-选择示例程序并体验"><a href="#2-选择示例程序并体验" class="headerlink" title="2.选择示例程序并体验"></a>2.选择示例程序并体验</h3><p>根据初始界面说明，操作模块进入尝试示例程序界面，按键顺序应该是：B→C。<br>示例程序列表界面的操作按键与初始界面相同，有3个信息需要我们掌握，<br>（1）示例程序种类：示例程序分为视觉类和语音类。<br>（2）示例程序列表：被选中的示例程序会有白框，且名字会亮起；<br>（3）示例程序序号：本固件版本的示例程序共有17个，斜线左侧的数字为选中的示例程序的序号，斜线右侧的数字为示例程序的总数。<br>与初始界面相同，我们使用A、B、C键来操作示例程序列表界面：<br>A键：向上一条示例程序，B键：向下一条示例程序/翻页<br>C键：选中示例程序并加载，长按C健:退出示例程序至主菜单。</p>
+<h3 id="3-示例程序详细说明"><a href="#3-示例程序详细说明" class="headerlink" title="3.示例程序详细说明"></a>3.示例程序详细说明</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>示例程序</th>
+<th>功能及操作介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>表演模式</td>
+<td>进入程序后，屏幕模组循环显示表情动画，机器狗进入表演模式（执行多种动作）。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>人脸检测</td>
+<td>进入程序后，AI模组检测画面中的人脸。如果检测到人脸，屏幕模组显示时会使用矩形框出画面中的人脸，同时机器狗执行握手动作。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>人脸识别</td>
+<td>进入程序后，AI模组能够识别到人脸，并框出，标出关键点；按下B键拍下人脸，并标记为master，共可以拍摄3张人脸照片，分别标记为master、friend1、friend2。摄像头再次拍到已标记的人脸时，框会变为绿色，并显示标记及置信度（这张脸在多大程度上是这个标记的脸）。如果识别到master人脸，机器狗会执行三轴转动动作。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>人脸跟随</td>
+<td>进入程序后，AI模组进行人脸识别，根据画面中人脸的位置，机器狗自动调整将屏幕正中心对准人脸，形成跟随人脸的效果。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>口罩检测</td>
+<td>进入程序后，AI模组进行口罩检测，识别画面中的人像是否配戴了口罩；如果检测到未佩戴口罩，则会以红框标出人像，并显示检测可信度，同时机器狗执行摇头动作；如果检测到佩戴口罩，则会以绿框标出人像，并显示检测可信度，同时机器狗执行点头动作；如果检测可信度小于一定值时，会以蓝框标出人像。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>手势识别</td>
+<td>进入程序后，模组会识别画面中的人手，根据手的不同手势，机器狗会做出不同的动作。e.g.手势-动作；拳头-转圈；拒绝-趴下；剪刀手-三轴联动；数字6-波浪；ok-坐下。</td>
+</tr>
+<tr>
+<td>7</td>
+<td>手部跟随</td>
+<td>进入程序后，AI模组进行手部检测，能够识别到手部，并框出，根据画面中手部的位置，机器狗自动调整将屏幕正中心对准手部，形成跟随手部的效果。</td>
+</tr>
+<tr>
+<td>8</td>
+<td>交通标志识别</td>
+<td>进入程序后，模组开始识别交通标识，可识别的标识包括：“直行”、“停止”、“禁止通行”和“停车”（标识可见下文1.交通标识）；在识别到标识后，机器狗会执行对应动作：前进、站立、后退、坐下。</td>
+</tr>
+<tr>
+<td>9</td>
+<td>红绿灯识别</td>
+<td>进入程序后，当模组识别到绿灯时，会在屏幕上以绿色标志标识出来，同时机器狗开始直行；当模组识别到红灯时，会在屏幕以红色标志标识出来，同时机器狗停止运动。</td>
+</tr>
+<tr>
+<td>10</td>
+<td>物体分类</td>
+<td>进入程序后，AI模组进行常见物体识别，如果识别到常见物体，则会在画面中框出，并标识出识别到的物体名称；如果未识别到常见物体，则会提示“Nothing Detected”。此外，当识别到的常见物体为人物(“person”)，机器狗会执行摇摆动作；当识别到的常见物体为狗(“dog”)，机器狗会执行撒尿动作；当识别到的常见物体为猫(“cat”)，机器狗会执行三轴转动动作。</td>
+</tr>
+<tr>
+<td>11</td>
+<td>骨头识别</td>
+<td>进入程序后，屏幕提示拍摄骨头的照片，按下B键拍摄骨头的照片（共5张），而后屏幕提示拍摄青菜的照片，按下B键拍摄青菜的照片（共5张）。采样完成后，AI模组会识别骨头和青菜，当识别到骨头时，屏幕出现标识，同时机器狗执行觅食动作；当时别到青菜时，屏幕出现标识，同时机器狗执行站立动作。</td>
+</tr>
+<tr>
+<td>12</td>
+<td>音频分析</td>
+<td>进入程序后，屏幕模块会显示麦克风采集到的音频，同时机器狗会根据音频做出不同的动作，具体为：采集到低音（红色圈），机器狗执行趴下动作；采集到中低音（绿色圈），机器狗执行伸懒腰动作；采集到中高音（蓝色圈），机器狗执行坐下动作；采集到高音（紫色圈），机器狗执行站立动作。</td>
+</tr>
+<tr>
+<td>13</td>
+<td>普通话识别（cs）</td>
+<td>进入程序后，AI模组进行普通话识别。屏幕显示有多种动作指令语句，当模组识别到动作指令语句时，机器狗会执行对应的动作。</td>
+</tr>
+<tr>
+<td>14</td>
+<td>区域颜色分析</td>
+<td>进入程序后，屏幕中心会出现采色区域方块，并在屏幕上方显示此时区域内的颜色数值和对应色块。</td>
+</tr>
+<tr>
+<td>15</td>
+<td>自动学习并追踪颜色</td>
+<td>进入后，程序首先自动捕捉并学习当前画面中心区域的颜色（持续约2秒）；之后进入追踪阶段，检测出画面中与学习内容颜色相近的区域，将其标识出来。</td>
+</tr>
+<tr>
+<td>16</td>
+<td>色块追踪</td>
+<td>进入程序后，模组会识别画面中的色块（纯色方块），并会根据色块和自己的相对位置调整自己的位置。（色块颜色越鲜艳效果越好）</td>
+</tr>
+<tr>
+<td>17</td>
+<td>寻找二维码并解码</td>
+<td>进入程序后，当屏幕画面中二维码（QR码）时，模组会将其标识出来，并在上方显示解码之后的文字内容。若文字内容为特定的一些命令语句（具体可见下文2.二维码），则机器狗会执行对应动作。</td>
+</tr>
+</tbody></table>
+<h3 id="4-示例程序所需图片素材"><a href="#4-示例程序所需图片素材" class="headerlink" title="4.示例程序所需图片素材"></a>4.示例程序所需图片素材</h3><p>(1) 交通标识图片</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>标识</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><img src="trafficsign/goforward.png" alt="goforward" style="zoom:40%;" /></td>
+<td>前进2s</td>
+</tr>
+<tr>
+<td>2</td>
+<td><img src="trafficsign/stop.png" alt="stop" style="zoom:50%;" /></td>
+<td>趴下</td>
+</tr>
+<tr>
+<td>3</td>
+<td><img src="trafficsign/forbid.png" alt="forbid" style="zoom:50%;" /></td>
+<td>后退</td>
+</tr>
+<tr>
+<td>4</td>
+<td><img src="trafficsign/park.png" alt="park" style="zoom:50%;" /></td>
+<td>坐下</td>
+</tr>
+</tbody></table>
+<p>(2) 二维码识别图片</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>指令</th>
+<th>示例QR码</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>hello</td>
+<td><img src="qrcode/hello.png" alt="hello" style="zoom:25%;" /></td>
+<td>招收</td>
+</tr>
+<tr>
+<td>2</td>
+<td>sit down</td>
+<td><img src="qrcode/sitdown.png" alt="sit down" style="zoom:25%;" /></td>
+<td>坐下</td>
+</tr>
+<tr>
+<td>3</td>
+<td>go forward</td>
+<td><img src="qrcode/goforward.png" alt="go forward" style="zoom:25%;" /></td>
+<td>前进2s</td>
+</tr>
+<tr>
+<td>4</td>
+<td>go backward</td>
+<td><img src="qrcode/gobackward.png" alt="go backward" style="zoom:25%;" /></td>
+<td>后退2s</td>
+</tr>
+<tr>
+<td>5</td>
+<td>turn left</td>
+<td><img src="qrcode/turnleft.png" alt="turn left" style="zoom:25%;" /></td>
+<td>左转90</td>
+</tr>
+<tr>
+<td>6</td>
+<td>turn right</td>
+<td><img src="qrcode/turnright.png" alt="turnright" style="zoom:25%;" /></td>
+<td>右转90</td>
+</tr>
+<tr>
+<td>7</td>
+<td>show</td>
+<td><img src="qrcode/show.png" alt="show" style="zoom:25%;" /></td>
+<td>打开表演模式</td>
+</tr>
+</tbody></table>
+<h2 id="三、移动端"><a href="#三、移动端" class="headerlink" title="三、移动端"></a>三、移动端</h2><h2 id="四、PC端"><a href="#四、PC端" class="headerlink" title="四、PC端"></a>四、PC端</h2><hr>
+<br>
+
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a><center>常见问题</center></h1><hr>
+<br>
+
+<h1 id="XGO-Mini二次开发指南-1-基于标准串口协议"><a href="#XGO-Mini二次开发指南-1-基于标准串口协议" class="headerlink" title="XGO-Mini二次开发指南(1)-基于标准串口协议"></a><center>XGO-Mini二次开发指南(1)-基于标准串口协议</center></h1><p><em>版本： V1.0</em><br><em>发布日期： 2021/08/05</em></p>
 <table>
     <tr>
         <th>日期</th><th>原因</th><th>作者</th>
@@ -235,7 +449,7 @@
 </table>
 
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;本文档适用于 XGO产品上位机与机器狗之间命令/数据交互的通信协议,采用标准TTL串行通讯，XH2.54 4PIN接口连接。 </p>
-<h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><p>&emsp;&emsp;XGO-Mini是一款12自由度桌面级机器狗，可以实现全向移动，六维姿态控制，姿态稳定，多种运动步态，内部搭载了9轴的IMU，关节位置传感和电流传感器反馈自身姿态和关节转角与力矩，用于内部算法和二次开发。<br>&emsp;&emsp;用六角螺丝到拧下背部两颗螺丝，左右两侧螺丝，尾部两颗螺丝后，拆除机器狗后背板，注意小心拔掉电源线。<br>&emsp;&emsp;如下图所示主板一侧有两个串口通信接口，按主板丝印线序和上位机线序对接即可以开始调试。两个端子对外供电电压分别是5V和3.3V，但不可同时使用。<br>&emsp;&emsp;默认情况下3.3V端子被AI模块占用，如果想用其他设备进通讯，请将AI模组端子拔下。<br><br><br><img src="miniprotocol_board.png" alt="board" title="board"><br><br></p>
+<h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><p>&emsp;&emsp;XGO-Mini是一款12自由度桌面级机器狗，可以实现全向移动，六维姿态控制，姿态稳定，多种运动步态，内部搭载了9轴的IMU，关节位置传感和电流传感器反馈自身姿态和关节转角与力矩，用于内部算法和二次开发。<br>&emsp;&emsp;用六角螺丝到拧下背部两颗螺丝，左右两侧螺丝，尾部两颗螺丝后，拆除机器狗后背板，注意小心拔掉电源线。<br>&emsp;&emsp;如下图所示主板一侧有两个串口通信接口，按主板丝印线序和上位机线序对接即可以开始调试。两个端子对外供电电压分别是5V和3.3V，但不可同时使用。<br>&emsp;&emsp;默认情况下3.3V端子被AI模块占用，如果想用其他设备进通讯，请将AI模组端子拔下。<br><br><br><img src="protocol/miniprotocol_board.png" alt="board" title="board"><br><br></p>
 <h2 id="软件接口"><a href="#软件接口" class="headerlink" title="软件接口"></a>软件接口</h2><p>通讯采用固定格式：字头+信息+字尾。<br>标准TTL串行通讯：</p>
 <table>
     <tr>
@@ -254,39 +468,39 @@
 
 <h3 id="1-通信格式"><a href="#1-通信格式" class="headerlink" title="1.通信格式"></a>1.通信格式</h3><table>
     <tr>
-        <th colspan="2"><center>字头</center></th><th>长度(Length)</th><th >Message</th><th>校验和(CheckSum)</th><th colspan="2"><center>字尾</center></th>
+        <th colspan="2"><center>字头</center></th><th>长度(Length)</th><th bgcolor=yellow>Message</th><th>校验和(CheckSum)</th><th colspan="2"><center>字尾</center></th>
     </tr>
     <tr>
-        <td>0x55</td><td>0x00</td><td></td><td ></td><td></td><td>0x00</td><td>0xAA</td>
+        <td>0x55</td><td>0x00</td><td></td><td bgcolor=yellow></td><td></td><td>0x00</td><td>0xAA</td>
     </tr>
     <tr>
-        <td></td><td></td><td>整个数据包所占字节数</td><td >具体数据</td><td>判断数据是否正确</td><td></td><td></td>
+        <td></td><td></td><td>整个数据包所占字节数</td><td bgcolor=yellow>具体数据</td><td>判断数据是否正确</td><td></td><td></td>
     </tr>
 </table>
 
 <p><strong>字头</strong>：固定格式<br><strong>长度</strong>：数据包长度=字头占位[2]+长度占位[1]+Data占位[x]+校验和占位[1]+字尾占用[2]=6+x<br><em><strong>Message</strong>：详见 <a href="#2-%E6%8C%87%E4%BB%A4">指令</a></em><br><strong>校验和</strong>：CheckSum = ~(Length+Message)若括号内的计算和超过255，则取最低的一个字节，然后取反<br><strong>字尾</strong>：固定格式<br><u>TIPS：本机接收指令时，如果长度或校验和出错，则认为数据出错，会自动丢弃该数据包。</u></p>
 <h3 id="2-指令"><a href="#2-指令" class="headerlink" title="2.指令"></a>2.指令</h3><h4 id="2-1-写指令，无应答-0x00"><a href="#2-1-写指令，无应答-0x00" class="headerlink" title="2.1.写指令，无应答 (0x00)"></a>2.1.写指令，无应答 (0x00)</h4><table>
     <tr>
-        <th colspan="2"><center>字头</center></th><th>长度(Length)</th><th >指令类型</th><th >首地址</th><th >数据</th><th>校验和(CheckSum)</th><th colspan="2"><center>字尾</center></th>
+        <th colspan="2"><center>字头</center></th><th>长度(Length)</th><th bgcolor=yellow>指令类型</th><th bgcolor=yellow>首地址</th><th bgcolor=yellow>数据</th><th>校验和(CheckSum)</th><th colspan="2"><center>字尾</center></th>
     </tr>
     <tr>
-        <td>0x55</td><td>0x00</td><td></td><td ></td><td ></td><td ></td><td></td><td>0x00</td><td>0xAA</td>
+        <td>0x55</td><td>0x00</td><td></td><td bgcolor=yellow></td><td bgcolor=yellow></td><td bgcolor=yellow></td><td></td><td>0x00</td><td>0xAA</td>
     </tr>
     <tr>
-        <td></td><td></td><td></td><td >0x00</td><td ></td><td >data1,data2...</td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td bgcolor=yellow>0x00</td><td bgcolor=yellow></td><td bgcolor=yellow>data1,data2...</td><td></td><td></td><td></td>
     </tr>
 </table>
 
 <p><strong>指令</strong>：0x00，向内存表连续写入一定字节的数据，不会产生应答<br><strong>首地址</strong>：数据包写入的首地址（详见协议内存表）<br><strong>数据</strong>：连续写入的数据<br>例：设置机器人最大速度向前运动<br>&emsp;&emsp;0x55 0x00 0x09 0x00 0x30 0xFF 0xC7 0x00 0xAA<br>&emsp;字头：0x55 0x00<br>&emsp;Length：0x09，数据包共9个字节<br>&emsp;Message：0x00无应答写指令，0x30前后移动速度寄存器地址，0xff设置最大速度<br>&emsp;CheckSum：0x09+0x00+0x30+0xFF=0x138，取最低字节0x38，取反得0xC7<br>&emsp;字尾：0x00 0xAA</p>
 <h4 id="2-2-读指令-0x02"><a href="#2-2-读指令-0x02" class="headerlink" title="2.2.读指令 (0x02)"></a>2.2.读指令 (0x02)</h4><table>
     <tr>
-        <th colspan="2"><center>字头</center></th><th>长度(Length)</th><th >指令</th><th >首地址</th><th >字节数</th><th>校验和(CheckSum)</th><th colspan="2"><center>字尾</center></th>
+        <th colspan="2"><center>字头</center></th><th>长度(Length)</th><th bgcolor=yellow>指令</th><th bgcolor=yellow>首地址</th><th bgcolor=yellow>字节数</th><th>校验和(CheckSum)</th><th colspan="2"><center>字尾</center></th>
     </tr>
     <tr>
-        <td>0x55</td><td>0x00</td><td></td><td ></td><td ></td><td ></td><td></td><td>0x00</td><td>0xAA</td>
+        <td>0x55</td><td>0x00</td><td></td><td bgcolor=yellow></td><td bgcolor=yellow></td><td bgcolor=yellow></td><td></td><td>0x00</td><td>0xAA</td>
     </tr>
     <tr>
-        <td></td><td></td><td>0x09</td><td >0x02</td><td ></td><td ></td><td></td><td></td><td></td>
+        <td></td><td></td><td>0x09</td><td bgcolor=yellow>0x02</td><td bgcolor=yellow></td><td bgcolor=yellow></td><td></td><td></td><td></td>
     </tr>
 </table>
 
@@ -294,27 +508,33 @@
 <p>返回数据包格式：</p>
 <table>
     <tr>
-        <th colspan="2"><center>字头</center></th><th>长度(Length)</th><th >应答符</th><th >首地址</th><th >数据</th><th>校验和(CheckSum)</th><th colspan="2"><center>字尾</center></th>
+        <th colspan="2"><center>字头</center></th><th>长度(Length)</th><th bgcolor=yellow>应答符</th><th bgcolor=yellow>首地址</th><th bgcolor=yellow>数据</th><th>校验和(CheckSum)</th><th colspan="2"><center>字尾</center></th>
     </tr>
     <tr>
-        <td>0x55</td><td>0x00</td><td></td><td ></td><td ></td><td ></td><td></td><td>0x00</td><td>0xAA</td>
+        <td>0x55</td><td>0x00</td><td></td><td bgcolor=yellow></td><td bgcolor=yellow></td><td bgcolor=yellow></td><td></td><td>0x00</td><td>0xAA</td>
     </tr>
     <tr>
-        <td></td><td></td><td></td><td >0x12</td><td ></td><td ></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td bgcolor=yellow>0x12</td><td bgcolor=yellow></td><td bgcolor=yellow></td><td></td><td></td><td></td>
     </tr>
 </table>
 
 <p><strong>应答符</strong>：0x12，表明该数据包为读取指令的应答包<br><strong>首地址</strong>：读取指令数据包中的首地址<br><strong>数据</strong>：读取到的数据，长度为相应读取指令要求字节长度<br>例：读取12个舵机的位置<br>&emsp;&emsp;0x55 0x00 0x09 0x02 0x50 0x0C 0x98 0x00 0xAA<br>&emsp;字头：0x55 0x00<br>&emsp;Length：0x09，数据包共9个字节<br>&emsp;Message：0x02读指令，0x50舵机ID为11位置寄存器地址，0x0C，连续读取12个字节<br>&emsp;CheckSum：0x09+0x02+0x50+0x0C=0x67，取反得0x98<br>&emsp;字尾：0x00 0xAA</p>
 <p>读取返回数据包：<br>&emsp;&emsp;0x55 0x00 0x14 0x12 0x50 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x89 0x00 0xAA<br>&emsp;字头：0x55 0x00<br>&emsp;Length：0x14，数据包共20个字节<br>&emsp;Message：0x12应答符，0x50首地址与相应读取指令一致，0x80共12个，对应12个连续寄存器地址<br>&emsp;CheckSum：0x14+0x12+0x50+0x80*12(d)=0x676，取最低字节0x76，取反得0x89<br>&emsp;字尾：0x00 0xAA</p>
-<h3 id="3-机器人坐标系"><a href="#3-机器人坐标系" class="headerlink" title="3.机器人坐标系"></a>3.机器人坐标系</h3><p><img src="miniprotocol_maincoordinate.png" alt="maincoordinate" title="maincoordinate"></p>
+<h3 id="3-机器人坐标系"><a href="#3-机器人坐标系" class="headerlink" title="3.机器人坐标系"></a>3.机器人坐标系</h3><p><img src="protocol/miniprotocol_maincoordinate.png" alt="maincoordinate" title="maincoordinate"></p>
 <center>整机坐标系</center>
 
-<p><img src="miniprotocol_legcoordinate.png" alt="legcoordinate" title="legcoordinate"></p>
+<p><img src="protocol/miniprotocol_legcoordinate.png" alt="legcoordinate" title="legcoordinate"></p>
 <center>单腿坐标系</center>
 
 <p>下面为XGO内存表<br>&emsp;&emsp;备注：调试模式、整机模式、单腿模式、舵机模式（优先级递减）：当尝试写入这四种模式下的任一寄存器以改变其中数据时，机器人将会默认进入该模式，而另三种模式下的寄存器数据不起作用。默认整机模式。</p>
-<object data="xgominiprotocol_table.pdf" type="application/pdf" width="120%" height="500px">
+<object data="protocol/xgominiprotocol_table.pdf" type="application/pdf" width="120%" height="500px">
+-- --
+<br>
 
+<h1 id="XGO-Mini二次开发指南-2-基于ROS开发包"><a href="#XGO-Mini二次开发指南-2-基于ROS开发包" class="headerlink" title="XGO-Mini二次开发指南(2)-基于ROS开发包 "></a><center>XGO-Mini二次开发指南(2)-基于ROS开发包 </center></h1><hr>
+<br>
+
+<h1 id="XGO-Mini二次开发指南-3-基于Python库文件"><a href="#XGO-Mini二次开发指南-3-基于Python库文件" class="headerlink" title="XGO-Mini二次开发指南(3)-基于Python库文件  "></a><center>XGO-Mini二次开发指南(3)-基于Python库文件  </center></h1>
     </div>
 
     
@@ -327,11 +547,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/08/15/XGOlite/" rel="prev" title="XGO lite">
-                  <i class="fa fa-chevron-left"></i> XGO lite
-                </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2021/08/15/XGOlite/" rel="next" title="XGO lite">
+                  XGO lite <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
